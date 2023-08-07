@@ -1,0 +1,5 @@
+<input type="number" [(ngModel)]="count">
+<!-- Pipe eg w/o param -->
+<div>{{count | relativeTime}}</div>
+<!-- Pipe with params -->
+<div>{{count | pluralize : 'second' : 'seconds'}}</div>

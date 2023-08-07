@@ -1,0 +1,29 @@
+<div *ngIf="!submitted">
+     <form [formGroup]="loginForm" (ngSubmit)="login()">
+          
+          <label for="password">Password</label>
+          <div>
+               <input id="password" formControlName="password" type="text">
+          </div>
+          <div class="error">
+               <p *ngIf="password.errors?.['required']">Password is required!</p>
+               <p *ngIf="password.errors?.['passwordPattern']">Password must have 2 of everything!</p>
+          </div>
+
+          <label for="confirmPassword">Confirm Password</label>
+          <div>
+               <input id="confirmPassword" formControlName="confirmPassword" type="text">
+          </div>
+          <div class="error">
+               <p *ngIf="confirmPassword.errors?.['required']">Password is required!</p>
+          </div>
+          <div class="button-container">
+               <button type="submit">
+                    Submit
+               </button>
+          </div>
+     </form>
+</div>
+<div *ngIf="submitted">
+     Form submitted successfully!
+</div>
