@@ -1,0 +1,197 @@
+<div>
+    <h2>1.Palindrome Checker</h2>
+<pre>
+  <code>
+    function palindrome(str) 
+        let newStr = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+        let reverseStr = newStr.split("").reverse().join("");
+        return newStr === reverseStr;
+
+    console.log(palindrome("eye"));
+  </code>
+</pre>
+</div>
+<div>
+    <h2>2.Roman Numeral Converter</h2>
+<pre>
+  <code>
+    function convertToRoman(num)
+        let romanNumeral = "";
+        let decimalValue = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+        let romanNumeralEquivalent = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+        for (let i = 0; i < decimalValue.length; i++) 
+            while (decimalValue[i] <= num) 
+                romanNumeral += romanNumeralEquivalent[i];
+                num -= decimalValue[i];
+            
+        
+        return romanNumeral;
+    
+
+    console.log(convertToRoman(36));
+  </code>
+</pre>
+</div>
+<div>
+    <h2>3.Caesars Cipher</h2>
+<pre>
+  <code>
+    function rot13(str) 
+        let newStr = "";
+        for (let i = 0; i < str.length; i++) 
+            let asciiNum = str[i].charCodeAt();
+            if (asciiNum >= 65 && asciiNum <= 90) 
+                if (asciiNum - 13 < 65) 
+                    newStr += String.fromCharCode(asciiNum + 13);
+                else 
+                    newStr += String.fromCharCode(asciiNum - 13);
+                
+            else 
+                newStr += str[i];
+            
+        
+        return newStr;
+
+    console.log(rot13("SERR PBQR PNZC"));
+  </code>
+</pre>
+</div>
+<div>
+    <h2>4.Telephone Number Validator</h2>
+<pre>
+  <code>
+    function telephoneCheck(str) 
+        <!-- let regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/; -->
+        return regex.test(str);
+
+    console.log(telephoneCheck("555-555-5555"));
+  </code>
+</pre>
+</div> 
+<div>
+    <h2>5.Cash Register</h2>
+<pre>
+  <code>
+    function checkCashRegister(price, cash, cid) 
+        let change = cash - price;
+        let totalCid = cid.reduce((acc, curr) => acc + curr[1], 0);
+        let changeArr = [];
+        let currencyUnit = [
+            ["PENNY", 0.01],
+            ["NICKEL", 0.05],
+            ["DIME", 0.1],
+            ["QUARTER", 0.25],
+            ["ONE", 1],
+            ["FIVE", 5],
+            ["TEN", 10],
+            ["TWENTY", 20],
+            ["ONE HUNDRED", 100]
+        ];
+        if (totalCid < change) 
+            return  status: "INSUFFICIENT_FUNDS", change: [] ;
+        
+        if (totalCid === change) 
+            return  status: "CLOSED", change: cid ;
+        
+        cid = cid.reverse();
+        for (let i = 0; i < cid.length; i++) 
+            let currency = cid[i][0];
+            let currencyTotal = cid[i][1];
+            let currencyValue = currencyUnit[i][1];
+            let currencyAmount = (currencyTotal / currencyValue).toFixed(2);
+            let currencyToReturn = 0;
+            while (change >= currencyValue && currencyAmount > 0) 
+                change -= currencyValue;
+                change = change.toFixed(2);
+                currencyAmount--;
+                currencyToReturn++;
+            
+            if (currencyToReturn > 0) 
+                changeArr.push([currency, currencyToReturn * currencyValue]);
+            
+        
+        if (change > 0) 
+            return  status: "INSUFFICIENT_FUNDS", change: [] ;
+        
+        return  status: "OPEN", change: changeArr ;
+
+    console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+  </code>
+</pre>
+</div> 
+<div>
+    <h2>6.Remove duplicates from Array</h2>
+<pre>
+    <code>
+        function removeDuplicates(arr) 
+            return arr.filter((item, index) => arr.indexOf(item) === index);
+    
+        console.log(removeDuplicates([1, 2, 3, 4, 4, 5, 6, 6, 7]));
+    </code>
+</pre>
+</div>
+<div>
+    <h2>7.Reverse a String</h2>
+<pre>
+    <code>
+        function reverseString(str) 
+            return str.split("").reverse().join("");
+    
+        console.log(reverseString("hello"));
+    </code>
+</pre>
+</div>
+<div>
+    <h2>8.Factorialize a Number</h2>
+<pre>    
+    <code>
+        function factorialize(num) 
+            let result = 1;
+            for (let i = 1; i <= num; i++) 
+                result *= i;
+            
+            return result;
+    
+        console.log(factorialize(5));
+    </code>
+</pre> 
+</div> 
+<div>
+    <h2>9.Find the Longest Word in a String</h2>
+<pre>
+    <code>
+        function findLongestWordLength(str) 
+            let words = str.split(" ");
+            let maxLength = 0;
+            for (let i = 0; i < words.length; i++) 
+                if (words[i].length > maxLength) 
+                    maxLength = words[i].length;
+                
+            
+            return maxLength;
+    
+        console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+    </code>
+</pre>
+</div>
+<div>
+    <h2>10.Return Largest Numbers in Arrays</h2>
+<pre>
+    <code>
+        function largestOfFour(arr) 
+            let result = [];
+            for (let i = 0; i < arr.length; i++) 
+                let largestNumber = arr[i][0];
+                for (let j = 1; j < arr[i].length; j++) 
+                    if (arr[i][j] > largestNumber) 
+                        largestNumber = arr[i][j];
+                    
+                
+                result[i] = largestNumber;
+            
+            return result;
+    
+        console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
+    </code>
+</pre>
+</div>
